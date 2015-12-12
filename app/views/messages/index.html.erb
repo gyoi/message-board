@@ -1,16 +1,86 @@
-<h1>メッセージ一覧</h1>
-<%# controllerから渡された@messagesを用いて名前と内容を表示 %>
-<% @messages.each do |message| %>
-  名前:<%= message.name %>
-  内容:<%= message.body %>
-  <br>
-<% end %>
-
-<%= form_for(Message.new) do |f| %>
-  名前：
-  <%= f.text_field :name %>
-  
-  内容：
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %>
+<div class="page-header">
+  <h1>heart warming message board</h1>
+</div>
+<div class="page-body">
+  <%# メッセージ一覧ここから %>
+  <div class="row">
+    <div class="icon col-sm-3 hidden-xs">
+      <span class="glyphicon glyphicon glyphicon-log-in" aria-hidden="true"></span>
+        <div class="icon-caption">心温まるこれまでの<br>メッセージ</div>
+    </div>
+    <div class="content col-sm-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+          <span class="glyphicon glyphicon-tree-deciduous"></span>
+            メッセージ一覧
+          </div>
+        </div>
+        <div class="panel-body">
+          <% @messages.each do |message| %>
+            <span class="label label-info"><%= message.name %></span>
+            <%= message.body %><br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%# メッセージ一覧ここまで %>
+  <hr>
+  <%# メッセージ投稿ここから %>
+  <div class="row">
+    <div class="icon col-sm-3 hidden-xs">
+      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+        <div class="icon-caption">心温めるこれからの<br>メッセージ</div>
+    </div>
+    <div class="content col-sm-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+          <span class="glyphicon glyphicon-tree-deciduous"></span>
+            メッセージを投稿する
+          </div>
+        </div>
+        <div class="panel-body">
+          <%# 名前/内容投稿フォーム・subbmitボタン設置 %>
+          <%= form_for(Message.new) do |f| %>
+            <label>
+              <span class="label label-info label-name">名前</span>
+              <%= f.text_field :name, value: "の助", :size => "40x1" %>
+            </label>
+            <br><br>
+            <label>
+              <span class="label label-info label-body">内容</span>
+              <%= f.text_area :body, value: "gyoiさんのｘｘｘが最高です！", :size => "40x5", :maxlength => "100" %>
+            </label>
+            <br><br>
+            <p>心温まるメッセージを投稿しますか？</p>
+            <%# submmitボタン設置。f.submitではglyphiconが埋め込めないためbutton_tagとする %>
+            <%= button_tag(data: {confirm: "しつこいようですが、心温まるメッセージですよね？"}, class: "btn btn-primary btn-sm") do %>
+              御意!! >
+              <%= content_tag :span, " ", class: "glyphicon glyphicon-user" %>
+              <% end %>
+            <%# 断るボタン設置 %>
+            <a href="http://search.kids.yahoo.co.jp/bin/search?ei=UTF-8&p=%E3%82%84%E3%81%95%E3%81%97%E3%81%95%E3%81%A8%E3%81%AF" target="_blank" class="btn btn-danger" role="button">断る</a> 
+            <%# 断るボタン設置終了 %>
+          <% end %>
+          <%# 名前/内容投稿フォーム・subbmitボタン設置終了 %>
+                </div>
+      </div>
+      <%# お願い事項ここから %>
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <span class="glyphicon glyphicon-warning-sign"></span>
+              お願い事項
+          </div>
+        </div>
+        <div class="panel-body">
+          おてやわらかにお願いします。
+        </div>
+      </div>
+      <%# お願い事項ここまで %>
+    </div>
+  </div>
+  <%# メッセージ投稿ここまで %>
+</div>
