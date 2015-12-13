@@ -44,6 +44,19 @@
         <div class="panel-body">
           <%# 名前/内容投稿フォーム・subbmitボタン設置 %>
           <%= form_for(Message.new) do |f| %>
+ 　　　　　　　　　　 <%# エラーメッセージ表示機能追加%>
+ 　　　　　　　　　　 <% if @message.errors.present? %>
+ 　　　　　　　　　　   <div class="alert alert-danger">
+ 　　　　　　　　　　     <%= alert %>
+ 　　　　　　　　　　     <ul>
+ 　　　　　　　　　　       <% @message.errors.full_messages.each do |full_message| %>
+ 　　　　　　　　　　         <li>
+ 　　　　　　　　　　           <%= full_message %>
+ 　　　　　　　　　　         </li>
+ 　　　　　　　　　　       <% end %> 
+ 　　　　　　　　　　     </ul>
+ 　　　　　　　　　　   </div>
+ 　　　　　　　　　　 <% end %>
             <label>
               <span class="label label-info label-name">名前</span>
               <%= f.text_field :name, value: "の助", :size => "40x1" %>
