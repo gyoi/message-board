@@ -42,44 +42,59 @@
           </div>
         </div>
         <div class="panel-body">
-          <%# 名前/内容投稿フォーム・subbmitボタン設置 %>
-          <%= form_for(Message.new) do |f| %>
-            <label>
-              <span class="label label-info label-name">名前</span>
-              <%= f.text_field :name, value: "の助", :size => "40x1" %>
-            </label>
-            <br><br>
-            <label>
-              <span class="label label-info label-body">内容</span>
-              <%= f.text_area :body, value: "gyoiさんのｘｘｘが最高です！", :size => "40x5", :maxlength => "30" %>
-            </label>
-            <br><br>
-            <p>心温まるメッセージを投稿しますか？</p>
-            <%# submmitボタン設置。f.submitではglyphiconが埋め込めないためbutton_tagとする %>
-            <%= button_tag(data: {confirm: "しつこいようですが、心温まるメッセージですよね？"}, class: "btn btn-primary btn-sm") do %>
-              御意!! >
-              <%= content_tag :span, " ", class: "glyphicon glyphicon-user" %>
-              <% end %>
-              <%# 断るボタン設置 %>
-              <a href="http://search.kids.yahoo.co.jp/bin/search?ei=UTF-8&p=%E3%82%84%E3%81%95%E3%81%97%E3%81%95%E3%81%A8%E3%81%AF" target="_blank" class="btn btn-danger" role="button">断る</a> 
-              <%# 断るボタン設置終了 %>
-            <% end %>
-            <%# 名前/内容投稿フォーム・subbmitボタン設置終了 %>
-        </div>
+  <%# 名前/内容投稿フォーム・submitボタン設置 %>
+  <%= form_for(Message.new, html: {class: "form-horizontal"}) do |f| %>
+    <div class="form-group">
+      <label for="inputname" class="col-sm-2 control-label">
+        <span class="label label-info label-name">
+          <%= f.label :name ,"お名前" %>
+        </span>
+      </label>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", placeholder: "お名前を聞かせてください" %>
       </div>
-      <%# お願い事項ここから %>
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <div class="panel-title">
-            <span class="glyphicon glyphicon-warning-sign"></span>
-              お願い事項
-          </div>
-        </div>
-        <div class="panel-body">
-          おてやわらかにお願いします。
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="inputbody" class="col-sm-2 control-label">
+        <span class="label label-info label-body">
+          <%= f.label :body ,"内容" %>
+        </span>
+      </label>  
+      <div class="col-sm-10">
+        <%= f.text_area :body, class: "form-control", placeholder: "心温まるメッセージをこちらに" %>
       </div>
-      <%# お願い事項ここまで %>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <p>心温まるメッセージを投稿しますか？</p>
+        <%# submitボタン設置。f.submitではglyphiconが埋め込めないためbutton_tagとする %>
+        <%= button_tag(data: {confirm: "しつこいようですが、心温まるメッセージですよね？"}, class: "btn btn-primary btn-sm") do %>
+          御意!! >
+          <%= content_tag :span, " ", class: "glyphicon glyphicon-user" %>
+        <% end %>
+        <%# 断るボタン設置 %>
+        <a href="http://search.kids.yahoo.co.jp/bin/search?ei=UTF-8&p=%E3%82%84%E3%81%95%E3%81%97%E3%81%95%E3%81%A8%E3%81%AF" target="_blank" class="btn btn-danger" role="button">断る</a> 
+        <%# 断るボタン設置終了 %>
+      </div>
+    </div>
+  <% end %>
+  <%# 名前/内容投稿フォーム・submitボタン設置終了 %>
+</div>
+</div>
+
+  <%# お願い事項ここから %>
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+          お願い事項
+      </div>
+    </div>
+    <div class="panel-body">
+      おてやわらかにお願いします。
+    </div>
+  </div>
+    <%# お願い事項ここまで %>
     </div>
   </div>
   <%# メッセージ投稿ここまで%>
