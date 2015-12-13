@@ -57,8 +57,14 @@
     </header>
     <%# ヘッダここまで %>
     <div class="container">
+      <% if notice %>
+        <div class="alert alert-info">
+          <%= notice %>
+        </div>
+      <% end %>
+      
       <%= yield %>
-          <footer>
+    <footer>
       <div class="copyright">© 2015 gyoi </div>
     </footer>
     </div>
