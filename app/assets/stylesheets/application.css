@@ -101,12 +101,9 @@ nav ul li a {
   margin: 10px 0px 0 0;
 }
 
-.panel-body .label-body {
-vertical-align: 500%;
-}
-
-.post-body {
-    margin: 120px 0 0 0;
+.form-group {
+  padding: 0px 100px 0px 0px ;
+  
 }
 
 footer {

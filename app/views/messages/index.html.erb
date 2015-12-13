@@ -18,10 +18,12 @@
         </div>
         <div class="panel-body">
           <% @messages.each do |message| %>
-            <span class="label label-info"><%= message.name %></span>
-            <%= message.body %><br>
-            (<%= link_to "edit" , edit_message_path(message) %>
-             <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+            <span class="label label-info">
+              <%= message.name %>
+            </span>
+              <%= message.body %>
+            (<%= link_to "編集" , edit_message_path(message) %>
+             <%= link_to "削除" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
             )
             <br>
           <% end %>
@@ -29,8 +31,15 @@
       </div>
     </div>
   </div>
-<%# メッセージ一覧ここまで %>
+  <%# メッセージ一覧ここまで %>
   <hr>
-<% #部分テンプレートを読み込んでいる %>
-<%= render 'form' %>
+  <%# メッセージ投稿ここから %>
+    <%# パネルタイトルはトップと編集で分けるため共通のパネルヘッダ・ボディを読み込み %>
+  　<%= render 'form1' %>
+      <span class="glyphicon glyphicon-leaf"></span>
+        メッセージを投稿する
+      </div>
+    </div>
+    <%= render 'form2' %>
+    <%# メッセージ投稿ここまで %>
 </div>
