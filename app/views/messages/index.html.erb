@@ -20,6 +20,9 @@
           <% @messages.each do |message| %>
             <span class="label label-info">
               <%= message.name %>
+              (お歳:
+               <%= message.age %>
+              )
             </span>
               <%= message.body %>
             (<%= link_to "編集" , edit_message_path(message) %>

@@ -21,6 +21,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <%= f.label :age ,"年齢", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :age, class: "form-control", placeholder: "お歳を聞かせてください" %>
+                </div>
+              </div>
+              <div class="form-group">
                <%= f.label :body ,"内容" , class: "col-sm-2 control-label"%>
                <div class="col-sm-10">
                  <%= f.text_area :body, class: "form-control", placeholder: "心温まるメッセージをこちらに" %>
