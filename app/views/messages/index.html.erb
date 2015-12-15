@@ -34,12 +34,19 @@
   <%# メッセージ一覧ここまで %>
   <hr>
   <%# メッセージ投稿ここから %>
-    <%# パネルタイトルはトップと編集で分けるため共通のパネルヘッダ・ボディを読み込み %>
-  　<%= render 'form1' %>
-      <span class="glyphicon glyphicon-leaf"></span>
-        メッセージを投稿する
-      </div>
+  <div class="row">
+    <div class="icon col-sm-3 hidden-xs">
+      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+        <div class="icon-caption">心温めるこれからの<br>メッセージ</div>
     </div>
-    <%= render 'form2' %>
-    <%# メッセージ投稿ここまで %>
-</div>
+    <div class="content col-sm-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <span class="glyphicon glyphicon-leaf"></span>
+              メッセージを投稿する
+          </div>
+        </div>
+        <%= render 'form' %>
+  <%# メッセージ投稿ここまで %>
+  </div>

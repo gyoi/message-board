@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
   
   def index
-    # Massageをすべて取得する
+    # メッセージをすべて取得する
     @messages = Message.all
     @message = Message.new
   end
